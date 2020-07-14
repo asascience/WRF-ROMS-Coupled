@@ -1,0 +1,7 @@
+SORC/ROMS
+SORC/WRF
+SORC/data
+SORC/Build_roms*
+SORC/Build_wrf*
+forcing/
+exec/
