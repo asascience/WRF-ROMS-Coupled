@@ -1,5 +1,7 @@
 # Checkout ROMS coupling branch
-svn checkout --username patrickt https://www.myroms.org/svn/coupling/trunk ROMS
+romsuser=patrickt
+
+svn checkout --username $romsuser https://www.myroms.org/svn/coupling/trunk ROMS
 
 cd ./ROMS
 aws s3 cp s3://ioos-cloud-sandbox/public/wrfroms/roms_coupling_gfort_fixes.tgz .

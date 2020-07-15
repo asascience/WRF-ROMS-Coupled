@@ -3,9 +3,11 @@
 ## Getting Started
 
 ## Checkout and Build the models
+
 ``` Shell
 cd WRF-ROMS-Coupled (or whatever folder you cloned this repository to)
 cd SORC
+edit checkout.sh and change romsuser to your username
 ./checkout.sh (ROMS sometimes has problems checking out, see the script for fix)
 ./buildit.sh
 ```
