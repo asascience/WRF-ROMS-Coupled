@@ -11,6 +11,7 @@ cd ..
 # Note: If you encounter an error message while retrieving ROMS similar to the following:
 # svn: E175002: REPORT of '/svn/coupling/!svn/me': Could not read response body: SSL error: A TLS packet with unexpected length was received. (https://www.myroms.org)
 # run:
+# cd ROMS
 # svn cleanup
 # svn update
 
