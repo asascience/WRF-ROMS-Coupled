@@ -2,11 +2,11 @@
 
 ## Getting Started
 
-After cloning this repository:
+## Checkout and Build the models
 ``` Shell
-cd WRF-ROMS-Coupled (or whatever you called it if something different)
+cd WRF-ROMS-Coupled (or whatever folder you cloned this repository to)
 cd SORC
-./checkout.sh (See the script if there are issues)
+./checkout.sh (ROMS sometimes has problems checking out, see the script for fix)
 ./buildit.sh
 ```
 ## Run the Hurricane Irene test case
