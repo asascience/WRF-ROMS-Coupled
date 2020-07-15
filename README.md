@@ -10,6 +10,8 @@ cd SORC
 edit checkout.sh and change romsuser to your username
 ./checkout.sh (ROMS sometimes has problems checking out, see the script for fix)
 ./buildit.sh
+Enter selection [1-75] : 34
+Compile for nesting? (1=basic, 2=preset moves, 3=vortex following) [default 1]: 1
 ```
 
 ## Download the forcing data and other inputs
