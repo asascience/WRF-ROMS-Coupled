@@ -57,5 +57,8 @@ MPIOPTS=${MPIOPTS:-"-np $NPROCS -ppn $PPN"}
 
 mpirun $MPIOPTS ./$exec $oceanin
 
-mv $PTMP/* $COMOUT
-
+if [ $? -ne 0 ]; then
+  echo "ERROR returned from mpirun"
+else
+  mv $PTMP/* $COMOUT
+fi

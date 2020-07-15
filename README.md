@@ -19,5 +19,8 @@ cd ../jobs
 ## Run the Hurricane Irene test case
 ``` Shell
 ./fcstrun.sh
+(or run it in the background and avoid terminal hangups)
+nohup ./fcstrun.sh < /dev/null >& run.out &
+tail -f run.out
 ```
 Output will be written to /ptmp/wrfroms as it runs and then copied to /com/wrfroms when the simulation finishes.
