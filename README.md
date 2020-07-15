@@ -9,9 +9,15 @@ cd SORC
 ./checkout.sh (ROMS sometimes has problems checking out, see the script for fix)
 ./buildit.sh
 ```
-## Run the Hurricane Irene test case
+
+## Download the forcing data and other inputs
 ``` Shell
 cd ../jobs
+./get_forcings.sh 
+```
+
+## Run the Hurricane Irene test case
+``` Shell
 ./fcstrun.sh
 ```
-Output will be written to /ptmp/wrfroms
+Output will be written to /ptmp/wrfroms as it runs and then copied to /com/wrfroms when the simulation finishes.

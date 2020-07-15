@@ -10,7 +10,6 @@ module load libpng/1.5.30
 module load esmf/8.0.0 
 
 clean=1
-
 PROCS=4
 
 if [ $clean -eq 0 ]; then

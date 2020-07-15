@@ -28,19 +28,11 @@ mkdir -p $COMOUT
 mkdir -p $PTMP
 
 # Copy forcing data
-#FRCDIR=$ROTDIR/forcing/$CDATE
-#cp -p $FRCDIR/* $PTMP
-cd $PTMP
-aws s3 cp s3://ioos-cloud-sandbox/public/wrfroms/irene_wrfroms_inputs.tgz .
-tar -xvf irene_wrfroms_inputs.tgz
-rm irene_wrfroms_inputs.tgz
+FRCDIR=$ROTDIR/forcing/$CDATE
+cp -p $FRCDIR/* $PTMP
 
-# Copy the gridspec and other fixed fields
-cp -p $ROTDIR/fix/* $PTMP
-
-# Copy the links needed by WRF
+# Copy the links needed by WRF, these were created during the build
 cp -Pp  $ROTDIR/SORC/data/* $PTMP
-
 
 export I_MPI_DEBUG=1
 
@@ -51,8 +43,6 @@ export PPN=$NPROCS
 
 echo "NPROCS is $NPROCS"
 
-#export NPROCS=1
-#export PPN=1
 
 export oceanin=coupling_esmf_atm_sbl.in
 
@@ -66,4 +56,6 @@ cd $PTMP
 MPIOPTS=${MPIOPTS:-"-np $NPROCS -ppn $PPN"}
 
 mpirun $MPIOPTS ./$exec $oceanin
+
+mv $PTMP/* $COMOUT
 
