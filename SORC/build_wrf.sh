@@ -38,6 +38,7 @@ module load wrfroms
 set which_MPI = openmpi                        # default, overwriten below
 set TOPDIR = $PWD
 set EXECDIR = `dirname ${PWD}`/exec
+mkdir -p $EXECDIR
 
 # Initialize.
 
