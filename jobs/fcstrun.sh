@@ -20,29 +20,42 @@ module load esmf/8.0.0
 
 ROTDIR=`dirname ${PWD}`
 
-CDATE=20110827
+CDATE=${CDATE:-20110827}
 COMOUT=/com/wrfroms/$CDATE
 PTMP=/ptmp/wrfroms/$CDATE
 
 mkdir -p $COMOUT
+
+if [ -e $PTMP ]; then rm -Rf $PTMP; fi
 mkdir -p $PTMP
 
 # Copy forcing data
-FRCDIR=$ROTDIR/forcing/$CDATE
-cp -p $FRCDIR/* $PTMP
+#FRCDIR=$ROTDIR/forcing/$CDATE
+#cp -p $FRCDIR/* $PTMP
 
 # Copy the links needed by WRF, these were created during the build
 cp -Pp  $ROTDIR/SORC/data/* $PTMP
+
+# Copy the inputs to PTMP
+cd $COMOUT
+cp -p * $PTMP
+
+#cp -p coupling_esmf_atm_sbl.in $PTMP   # Coupler/Mediator
+#cp -p roms_doppio_coupling.in $PTMP    # ROMS
+#cp -p namelist.input $PTMP             # WRF
 
 export I_MPI_DEBUG=1
 
 curdir=$PWD
 
-export NPROCS=24
-export PPN=$NPROCS
+export NODES=${NODES:-1}
+export NPROCS=${NPROCS:-24}     # Number of processors
+export PPN=${PPN:-$((NPROCS/NODES))}
+
+export HOSTFILE=${HOSTFILE:-$PWD/hosts}
+export MPIOPTS=${MPIOPTS:-"-np $NPROCS -ppn $PPN"}
 
 echo "NPROCS is $NPROCS"
-
 
 export oceanin=coupling_esmf_atm_sbl.in
 
@@ -53,9 +66,7 @@ export exec=romsM_atmsbl
 cp -p $ROTDIR/exec/$exec $PTMP
 cd $PTMP
 
-MPIOPTS=${MPIOPTS:-"-np $NPROCS -ppn $PPN"}
-
-mpirun $MPIOPTS ./$exec $oceanin
+mpirun $MPIOPTS $PTMP/$exec $oceanin
 
 if [ $? -ne 0 ]; then
   echo "ERROR returned from mpirun"
