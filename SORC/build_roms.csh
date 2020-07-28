@@ -44,7 +44,7 @@
 #::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 source /usr/share/Modules/init/csh
-module purge
+#module purge
 module load wrfroms
 
 set TOPDIR = $PWD

@@ -9,8 +9,15 @@ module load hdf5/1.10.5
 module load libpng/1.5.30 
 module load esmf/8.0.0 
 
+export ESMF_COMPILER=gfortran
+export ESMF_ABI=64
+export ESMF_COMM=intelmpi
+export ESMF_SITE=default
+export ESMF_DIR=/usrx/esmf/8.0.0
+export ESMF_BOPT=O
+
 clean=1
-PROCS=4
+PROCS=8
 
 if [ $clean -eq 0 ]; then
   rebuild='-noclean -noconfig'
@@ -18,7 +25,7 @@ if [ $clean -eq 0 ]; then
 
   yes "" | ./build_wrf.sh -move $rebuild -j $PROCS
   if [ $? -eq 0 ]; then
-    yes | ./build_roms.csh $rebuildo -j $PROCS
+      ./build_roms.csh $rebuildo -j $PROCS
   else
     echo "ERROR building WRF"
   fi

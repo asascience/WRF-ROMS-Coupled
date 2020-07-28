@@ -21,8 +21,9 @@ module load esmf/8.0.0
 ROTDIR=`dirname ${PWD}`
 
 CDATE=${CDATE:-20110827}
-COMOUT=/com/wrfroms/$CDATE
-PTMP=/ptmp/wrfroms/$CDATE
+HH=${HH:-'06'}
+COMOUT=/com/wrfroms/$CDATE$HH
+PTMP=/ptmp/wrfroms/$CDATE$HH
 
 mkdir -p $COMOUT
 
