@@ -13,7 +13,6 @@ fi
 
 # Apply fixes for gfortran 
 cd ./ROMS
-# 4.1.3 updates: aws s3 cp s3://ioos-cloud-sandbox/public/wrfroms/roms_coupling_gfort_fixes.tgz .
 wget https://ioos-cloud-sandbox.s3.amazonaws.com/public/wrfroms/roms_wrf4.2_gfort_fixes.tgz
 tar -xvf roms_wrf4.2_gfort_fixes.tgz
 cd ..
@@ -21,8 +20,7 @@ cd ..
 # Checkout WRF fork and select branch
 git clone git@github.com:asascience/WRF.git
 cd WRF
-#git checkout v4.1.3_cpl_gfort
-git checkout -t origin/mediation_integrate_fix
+git checkout -t origin/4.2_fixes
 cd ..
 
 # The official repository
