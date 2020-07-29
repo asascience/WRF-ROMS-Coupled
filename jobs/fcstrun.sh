@@ -73,4 +73,6 @@ if [ $? -ne 0 ]; then
   echo "ERROR returned from mpirun"
 else
   mv $PTMP/* $COMOUT
+  cd $COMOUT
+  rm -Rf $PTMP
 fi

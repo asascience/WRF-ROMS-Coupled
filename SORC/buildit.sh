@@ -9,6 +9,8 @@ module load hdf5/1.10.5
 module load libpng/1.5.30 
 module load esmf/8.0.0 
 
+# ROMS Compilers configis uses these to locate esmf.mk instead of using setting from modulefile
+# include $(ESMF_MK_DIR)/esmf.mk
 export ESMF_COMPILER=gfortran
 export ESMF_ABI=64
 export ESMF_COMM=intelmpi
@@ -25,7 +27,7 @@ if [ $clean -eq 0 ]; then
 
   yes "" | ./build_wrf.sh -move $rebuild -j $PROCS
   if [ $? -eq 0 ]; then
-      ./build_roms.csh $rebuildo -j $PROCS
+    ./build_roms.csh $rebuildo -j $PROCS
   else
     echo "ERROR building WRF"
   fi
