@@ -1,6 +1,7 @@
-Compilers/Linux-gfortran.mk
 ESM/wrf_configure
-Master/esmf_atm_wrf.h
-Master/esmf_data.F
-Master/esmf_roms.F
-Master/mod_esmf_esm.F
+
+#Compilers/Linux-gfortran.mk
+#Master/esmf_atm_wrf.h
+#Master/esmf_data.F
+#Master/esmf_roms.F
+#Master/mod_esmf_esm.F

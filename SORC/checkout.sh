@@ -3,7 +3,9 @@
 # Checkout ROMS coupling branch
 romsuser=patrickt
 
-svn checkout --username $romsuser https://www.myroms.org/svn/coupling/trunk ROMS
+ROMSVER=186
+
+svn checkout --username $romsuser -r $ROMSVER https://www.myroms.org/svn/coupling/trunk ROMS
 if [ $? -ne 0 ]; then
     cd ROMS
     svn cleanup
@@ -13,8 +15,10 @@ fi
 
 # Apply fixes for gfortran 
 cd ./ROMS
-wget https://ioos-cloud-sandbox.s3.amazonaws.com/public/wrfroms/roms_wrf4.2_gfort_fixes.tgz
-tar -xvf roms_wrf4.2_gfort_fixes.tgz
+fixfile=roms_wrf_oct2020_fixes.tgz
+url=https://ioos-cloud-sandbox.s3.amazonaws.com/public/wrfroms
+wget $url/$fixfile
+tar -xvf $fixfile
 cd ..
 
 # Checkout WRF fork and select branch
