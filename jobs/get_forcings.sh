@@ -2,7 +2,7 @@
 
 ROTDIR=`dirname ${PWD}`
 
-CDATE=20110827
+CDATE=2011082706
 COMROT=/com/wrfroms/$CDATE
 mkdir -p $COMROT
 cd $COMROT

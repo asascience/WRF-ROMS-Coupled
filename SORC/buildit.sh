@@ -19,7 +19,7 @@ export ESMF_DIR=/usrx/esmf/8.0.0
 export ESMF_BOPT=O
 
 clean=1
-PROCS=8
+PROCS=4
 
 if [ $clean -eq 0 ]; then
   rebuild='-noclean -noconfig'
